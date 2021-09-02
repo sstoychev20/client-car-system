@@ -1,20 +1,20 @@
 # client-car-system
 
-cp .env.example .env
-composer install
-php artisan key:generate
-php artisan cache:clear && php artisan config:clear
-php artisan serve
+cp .env.example .env <br>
+composer install  <br>
+php artisan key:generate <br>
+php artisan cache:clear && php artisan config:clear <br>
+php artisan serve <br>
+ 
+mysql <br>
+create database laravel; <br>
+exit; <br>
 
-mysql
-create database laravel;
-exit;
-
-DB_CONNECTION=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME={USERNAME}
-DB_PASSWORD={PASSWORD}
+DB_CONNECTION=mysql <br>
+DB_HOST=localhost <br>
+DB_PORT=3306 <br>
+DB_DATABASE=laravel <br>
+DB_USERNAME={USERNAME} <br>
+DB_PASSWORD={PASSWORD} <br>
 
 php artisan migrate:fresh --seed
