@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Car;
 
-class ClientsController extends Controller
+class CarsController extends Controller
 {
 
 
     public function __construct(){
         $this->middleware('auth', ['except' => ['index','show']]);
     }
-
-
 
     /**
      * Display a listing of the resource.
@@ -22,10 +20,10 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $client =Client::all();
+        $cars =Car::all();
 
-        return view('clients.index',[
-            'clients'=> $client
+        return view('cars.index',[
+            'cars'=> $cars
         ]);
     }
 
@@ -36,7 +34,11 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+
+        $cars =Car::all();
+        return view('cars.create',[
+            'cars'=>$cars
+        ]);
     }
 
     /**
@@ -47,19 +49,24 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        $client=Client::create([
-            'make'=>$request->input('make'),
+        // $car =new Car;
+        // $car->licence_no=$request->input('licence_no');
+        // $car->vin=$request->input('vin');
+        // $car->model=$request->input('model');
+        // $car->make=$request->input('make');
+        // $car->date=$request->input('date');
+        // $car->save();
+
+        $car=Car::create([
+            'client_id'=>$request->input('client_id'),
+            'licence_no'=>$request->input('licence_no'),
+            'vin'=>$request->input('vin'),
             'model'=>$request->input('model'),
-            'client_name'=>$request->input('client_name'),
-            'license_number'=>$request->input('license_number'),
-            'year'=>$request->input('year'),
-            'telephone'=>$request->input('telephone'),
-            'reg_data'=>$request->input('reg_data'),
-            'email'=>$request->input('email'),
-            'user_id'=>auth()->user()->id,
+            'make'=>$request->input('make'),
+            'date'=>$request->input('date'),
         ]);
 
-        return redirect('/clients');
+        return redirect('/cars');
     }
 
     /**
@@ -70,9 +77,7 @@ class ClientsController extends Controller
      */
     public function show($id)
     {
-        $client = Client::find($id);
-
-        return view('clients.show')->with('client',$client);
+        //
     }
 
     /**
@@ -81,9 +86,9 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(Car $car)
     {
-        return view('clients.edit')->with('client',$client);
+        return view('cars.edit')->with('car',$car);
     }
 
     /**
@@ -95,19 +100,17 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client=Client::where('id',$id)
+        $car=Car::where('id',$id)
             ->update([
-            'make'=>$request->input('make'),
+            'client_id'=>$request->input('client_id'),
+            'licence_no'=>$request->input('licence_no'),
+            'vin'=>$request->input('vin'),
             'model'=>$request->input('model'),
-            'client_name'=>$request->input('client_name'),
-            'license_number'=>$request->input('license_number'),
-            'year'=>$request->input('year'),
-            'telephone'=>$request->input('telephone'),
-            'reg_data'=>$request->input('reg_data'),
-            'email'=>$request->input('email'),
+            'make'=>$request->input('make'),
+            'date'=>$request->input('date'),
         ]);
 
-        return redirect('/clients');
+        return redirect('/cars');
     }
 
     /**
@@ -116,10 +119,10 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client )
+    public function destroy(Car $car)
     {
-        $client->delete();
+        $car->delete();
 
-        return redirect("/clients");
+        return redirect("/cars");
     }
 }

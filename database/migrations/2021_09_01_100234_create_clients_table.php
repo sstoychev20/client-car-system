@@ -25,6 +25,20 @@ class CreateClientsTable extends Migration
             $table->string('email');
             $table->timestamps();
         });
+
+        Schema::create('cars', function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('client_id');
+            $table->string('licence_no');
+            $table->string('vin');
+            $table->string('model');
+            $table->string('make');
+            $table->string('date');
+            $table->timestamps();
+            $table->foreign('client_id')
+                ->references('id')
+                ->on('clients')->onDelete('cascade');
+        });
     }
 
     /**

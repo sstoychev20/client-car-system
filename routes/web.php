@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CarsController;
 use App\Http\Controllers\ClientsController;
 
 /*
@@ -15,11 +15,10 @@ use App\Http\Controllers\ClientsController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('products',[ProductsController::class,'index']);
+Route::resource('/cars' , CarsController::class);
+Route::resource('/clients' , ClientsController::class);
 
-//Clients endpoints
-Route::get('/clients',[ClientsController::class,'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
