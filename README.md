@@ -84,4 +84,3 @@ DB_USERNAME={USERNAME} <br>
 DB_PASSWORD={PASSWORD} <br>
 
 php artisan migrate:fresh --seed
->>>>>>> ba6d42c5e99593eec7c03a95214d5a64dc94e217
