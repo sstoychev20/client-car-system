@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
@@ -62,3 +63,25 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# client-car-system
+
+cp .env.example .env <br>
+composer install  <br>
+php artisan key:generate <br>
+php artisan cache:clear && php artisan config:clear <br>
+php artisan serve <br>
+ 
+mysql <br>
+create database laravel; <br>
+exit; <br>
+
+DB_CONNECTION=mysql <br>
+DB_HOST=localhost <br>
+DB_PORT=3306 <br>
+DB_DATABASE=laravel <br>
+DB_USERNAME={USERNAME} <br>
+DB_PASSWORD={PASSWORD} <br>
+
+php artisan migrate:fresh --seed
+>>>>>>> ba6d42c5e99593eec7c03a95214d5a64dc94e217
