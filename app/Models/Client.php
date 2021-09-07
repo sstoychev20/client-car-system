@@ -21,7 +21,6 @@ class Client extends Model
     'telephone',
     'reg_data', 
     'email',
-    'user_id',
     ];
 
     public function carModels(){

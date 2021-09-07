@@ -23,7 +23,7 @@ class CarFactory extends Factory
     public function definition()
     {
         return [
-            'client_id' =>rand(1,3),
+            'client_id' =>rand(1,4),
             'licence_no' => $this->faker->numerify('###-###'),
             'vin' => $this->faker->numerify('####'),
             'model' => $this->faker->word(1),
